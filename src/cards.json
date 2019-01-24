@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "image": "/assets/images/maltipoo.jpg"
+    },
+    {
+        "id": 2,
+        "image": "/assets/images/chubby-chihuahua.jpg"
+    },
+    {
+        "id": 3,
+        "image": "/assets/images/grumpy-chihuahua.jpg"
+    },
+    {
+        "id": 4,
+        "image": "/assets/images/lady-chihuahua.jpg"
+    },
+    {
+        "id": 5,
+        "image": "/assets/images/stern-chihuahua.jpg"
+    },
+    {
+        "id": 6,
+        "image": "/assets/images/bulldog.jpg"
+    },
+    {
+        "id": 7,
+        "image": "/assets/images/lab-puppy.jpg"
+    },
+    {
+        "id": 8,
+        "image": "/assets/images/happy-lab.jpg"
+    },
+    {
+        "id": 9,
+        "image": "/assets/images/helper-dog.jpg"
+    },
+    {
+        "id": 10,
+        "image": "/assets/images/white-pom.jpg"
+    },
+    {
+        "id": 11,
+        "image": "/assets/images/husky-pup.jpg"
+    },
+    {
+        "id": 12,
+        "image": "/assets/images/white-chihuahua.jpg"
+    }
+]
