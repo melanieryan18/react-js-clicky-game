@@ -1,4 +1,12 @@
 .square {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  color: white;
+  background-repeat: no-repeat;
+  margin: 0 auto 20px;
+}
+
+.square:hover {
+  cursor: pointer;
 }
