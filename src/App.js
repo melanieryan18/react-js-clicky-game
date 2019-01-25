@@ -4,23 +4,26 @@ import cards from "./cards.json";
 import Dogs from "./components/Dogs";
 import Navigation from "./components/Navigation";
 
+
 class App extends Component {
   state = {
-    randomId: 1,
     result: "",
+    beenClicked: [],
     score: 0,
     topScore: 0,
-    doggies: cards
+    doggies: cards,
+    allPups:  cards.length,
+    gamesPlayed: 0
   };
 
 
   componentDidMount() {
     const newDoggies = this.shuffleArray(cards);
-    this.setState({doggies: newDoggies});
+    this.setState({ doggies: newDoggies });
   }
 
   shuffleArray(array) {
-    for ( let i = array.length - 1; i > 0; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = array[i];
       array[i] = array[j];
@@ -29,12 +32,49 @@ class App extends Component {
     return array;
   }
 
+  handleclick = (id) => {
+    const guessed = this.state.beenClicked.includes(id);
+    if (guessed) {
+      if (this.state.score > this.state.topScore) {
+        this.setState({
+          result: "You've cliked the same doggie twice!",
+          score: 0,
+          topScore: this.state.score
+        })
+      } else {
+        this.setState({
+          result: "You've cliked the same doggie twice!",
+          score: 0
+        })
+      }
+      this.shuffleArray(this.state.doggies);
+    }
+    else {
+      if (this.state.score === (this.state.allPups - 1)) {
+        this.setState({
+          result: "U Win! Play with moar dogs!",
+          score: 0,
+          topScore: 0,
+          beenClicked: []
+        })
+      }
+        this.setState({
+          result: "Correct! Pet more dogs!",
+          score: this.state.score + 1,
+          beenClicked: [...this.state.beenClicked, id]
+        })
+        this.shuffleArray(this.state.doggies);
+    }
+  }
 
   render() {
     return (
       <>
-        <Navigation />
-        <Dogs />
+        <Navigation
+          result={this.state.result}
+          score={this.state.score}
+          topScore={this.state.topScore}
+        />
 
         <div className="container">
           <div className="row">
@@ -49,11 +89,12 @@ class App extends Component {
 
           <div className="row">
             {this.state.doggies.map(doggie => (
-              <div
+              <Dogs
+                id={doggie.id}
                 key={doggie.id}
-                className="square col-md-4"
-                style={{ backgroundImage: `url(${doggie.image})` }}>
-              </div>
+                image={doggie.image}
+                handleclick={this.handleclick}
+              />
             ))};
           </div>
         </div>
@@ -62,4 +103,5 @@ class App extends Component {
     )
   }
 }
+
 export default App;
