@@ -37,14 +37,16 @@ class App extends Component {
     if (guessed) {
       if (this.state.score > this.state.topScore) {
         this.setState({
-          result: "You've cliked the same doggie twice!",
+          result: "You've clicked the same doggie twice!",
           score: 0,
-          topScore: this.state.score
+          topScore: this.state.score,
+          beenClicked: []
         })
       } else {
         this.setState({
           result: "You've cliked the same doggie twice!",
-          score: 0
+          score: 0,
+          beenClicked: []
         })
       }
       this.shuffleArray(this.state.doggies);
